@@ -66,7 +66,12 @@ namespace Mle {
  */
 
 constexpr uint16_t kMaxChildren               = OPENTHREAD_CONFIG_MLE_MAX_CHILDREN;
+/* BDD Level change */
+#ifndef DISABLE_LEVEL_CHANGES
+constexpr uint8_t  kMaxChildKeepAliveAttempts = 6; ///< Max keep alive attempts before reattach to a new Parent.
+#else
 constexpr uint8_t  kMaxChildKeepAliveAttempts = 4; ///< Max keep alive attempts before reattach to a new Parent.
+#endif
 constexpr uint8_t  kFailedChildTransmissions  = OPENTHREAD_CONFIG_FAILED_CHILD_TRANSMISSIONS;
 
 #if OPENTHREAD_FTD && OPENTHREAD_CONFIG_BACKBONE_ROUTER_ENABLE
@@ -94,7 +99,12 @@ constexpr uint32_t kParentResponseMaxDelayRouters  = 500;  ///< Max response del
 constexpr uint32_t kParentResponseMaxDelayAll      = 1000; ///< Max response delay for Parent Req to all (in msec)
 constexpr uint32_t kUnicastRetransmissionDelay     = 1000; ///< Base delay before an MLE unicast retx (in msec)
 constexpr uint32_t kChildUpdateRequestPendingDelay = 100;  ///< Delay for aggregating Child Update Req (in msec)
+/* BDD Level change */
+#ifndef DISABLE_LEVEL_CHANGES
+constexpr uint8_t  kMaxTransmissionCount           = 5;    ///< Max number of times an MLE message may be transmitted
+#else
 constexpr uint8_t  kMaxTransmissionCount           = 3;    ///< Max number of times an MLE message may be transmitted
+#endif
 constexpr uint32_t kMaxResponseDelay               = 1000; ///< Max response delay for a multicast request (in msec)
 constexpr uint32_t kMaxChildIdRequestTimeout       = 5000; ///< Max delay to rx a Child ID Request (in msec)
 constexpr uint32_t kMaxChildUpdateResponseTimeout  = 2000; ///< Max delay to rx a Child Update Response (in msec)
@@ -133,7 +143,12 @@ constexpr uint32_t kAdvertiseIntervalMax = 5; ///< Max Advertise interval (in se
 constexpr uint32_t kAdvertiseIntervalMax = 32; ///< Max Advertise interval (in sec)
 #endif
 
+/* BDD Level change */
+#ifndef DISABLE_LEVEL_CHANGES
+constexpr uint8_t kFailedRouterTransmissions = 10;
+#else
 constexpr uint8_t kFailedRouterTransmissions = 4;
+#endif
 #if OPENTHREAD_CONFIG_MAC_CSL_RECEIVER_ENABLE
 constexpr uint8_t kFailedCslDataPollTransmissions = 15;
 #endif
