@@ -1650,7 +1650,7 @@ bool MleRouter::UpdateLinkQualityOut(const RouteTlv &aRoute, Router &aNeighbor, 
         myRouteCount += aRoute.IsRouterIdSet(routerId);
     }
 
-    linkQuality = aRoute.GetLinkQualityIn(myRouteCount);
+    linkQuality = (LinkQuality)aRoute.GetLinkQualityIn(myRouteCount);
     VerifyOrExit(aNeighbor.GetLinkQualityOut() != linkQuality);
 
     oldLinkCost = mRouterTable.GetLinkCost(aNeighbor);
